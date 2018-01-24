@@ -1,0 +1,7 @@
+name: sum
+
+dependencies:
+    - parallel
+
+library:
+    source-dirs: .
