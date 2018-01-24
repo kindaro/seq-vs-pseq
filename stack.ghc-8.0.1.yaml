@@ -1,0 +1,2 @@
+resolver: lts-7.24
+ghc-build: standard
