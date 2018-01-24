@@ -165,20 +165,23 @@ fi
 
 cd prof-results
 
-echo 'project   	optimization	no prof	prof'
+{
+    echo 'project   	optimization	no-prof	prof'
 
-for dir in */
-do
-    for tag in none O1 O2
+    for dir in */
     do
-        echo -n "${dir%/}   	$tag     \t"
-        cat $dir/no-prof.$tag.time |
-            sed -r 's/.* ([0-9]+\.[0-9]+s) user .*/\1/' |
-            tr -s '\n' '\t'
+        for tag in none O1 O2
+        do
+            echo -n "${dir%/}   	$tag     \t"
+            cat $dir/no-prof.$tag.time |
+                sed -r 's/.* ([0-9]+\.[0-9]+s) user .*/\1/' |
+                tr -s '\n' '\t'
 
-        cat $dir/prof.$tag.time |
-            sed -r 's/.* ([0-9]+\.[0-9]+s) user .*/\1/' |
-            tr -s '\n' '\t'
-        echo
+            cat $dir/prof.$tag.time |
+                sed -r 's/.* ([0-9]+\.[0-9]+s) user .*/\1/' |
+                tr -s '\n' '\t'
+            echo
+        done
     done
-done
+
+} | tr '\t' ' ' | tr -s ' ' | column -t
