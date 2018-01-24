@@ -165,7 +165,7 @@ fi
 
 cd prof-results
 
-echo 'project   	optimization	prof	no prof'
+echo 'project   	optimization	no prof	prof'
 
 for dir in */
 do
